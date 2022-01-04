@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Alex Aveldanez</title>
+    <title>The Hundred: A Coding Project By Alex Aveldanez</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +23,7 @@
     <!-- NAV SECTION -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img class="d-inline-block align-text-top" src="img/aPlusLogo_Main.png" height="35">APP NAME</a>
+        <a class="navbar-brand" href="#"><img class="d-inline-block align-text-top" src="img/aPlusLogo_Main.png" height="35">The Hundred</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,20 +53,89 @@
     <!-- MAIN SECTION -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for The Hundred.</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        function HelloWorld() {
-                            alert("Hello World");
+
+
+                        // get the values from the UI page
+                        // starts or controller function
+                        function getValues() {
+                            // get values from the page
+                            let startValue = document.getElementById("startValue").value;
+                            let endValue = document.getElementById("endValue").value;
+                        
+                            //We need to validate our input
+                            //parse into Integers
+                            startValue = parseInt(startValue);
+                            endValue = parseInt(endValue);
+                        
+                            if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                //we call generateNumbers
+                                let numbers = generateNumbers(startValue, endValue);
+                                //we call displayNumbers
+                                displayNumbers(numbers);
+                            } else {
+                                alert("You must enter integers");
+                            }
+                        }
+                        
+                        // generate numbers from the startValue to the endValue
+                        // logic function(s)
+                        function generateNumbers(sValue, eValue) {
+                        
+                            let numbers = [];
+                        
+                            // we want to get all numbers from start to end
+                            for (let index = sValue; index <= eValue; index++) {
+                                
+                                //this will execute in a loop until index = eValue
+                                numbers.push(index);
+                            }
+                        
+                            return numbers;
+                        }
+                        
+                        // display the numbers and mark even numbers bold
+                        // display or view functionsd
+                        function displayNumbers(numbers) {
+                        
+                            let templateRows = "";
+                        
+                            for (let index = 0; index < numbers.length; index++) {
+                        
+                                let className = "even";
+                        
+                                let number = numbers[index];
+                        
+                                if(number % 2 == 0){
+                                    className = "even";
+                                }
+                                else {
+                                    className = "odd";
+                                }
+                                
+                                templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+                        
+                                document.getElementById("results").innerHTML = templateRows;
+                            }
                         }
                     </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The Code is structured in three functions.</p>
+                    <h5>getValues</h5>
+                    <p>getValues is a function gets the values from Inputs on the UI page and acts as a controller function for the app.</p>
+                    <h5>generateNumbers</h5>
+                    <p>The generate numbers function takes the input from the UI and first validates that the input is a valid integrer then uses
+                        the start and end values to generate numbers which are inserted into an array and then returns that array.
+                    </p>
+                    <h5>displayNumbers</h5>
+                    <p>displayNumbers function takes the array of numbers and uses a loop to iterate through each index of the numbers array
+                        and produces some HTML for each index in the array. It also checks if each number is even and adds a class to that line of 
+                    HTML to make the text bold. </p>
                 </div>
             </div>
         </div>

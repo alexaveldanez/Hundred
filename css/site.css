@@ -5,6 +5,18 @@
     --white-color: #dff3e4;
 }
 
+.odd {
+    font-weight: 100;
+}
+
+.even {
+    font-weight: bold;
+}
+
+.logoFont {
+    font-family: 'Racing Sans One', cursive;;
+}
+
 body {
     color: var(--dark-color)
 }
@@ -66,6 +78,7 @@ main>.container {
     padding: 60px 15px 0;
     margin-bottom: 5rem;
 }
+
 .sticky-footer {
     position: sticky;
     left: 0;
